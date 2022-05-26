@@ -1,4 +1,6 @@
-import React from 'react'
+import React from 'react';
+import UpdateList from "./UpdateList";
+import DeleteList from "./DeleteList";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function Lists(props) {
@@ -9,11 +11,29 @@ function Lists(props) {
                 <td>{element.id}</td>
                 <td>{element.title}</td>
                 <td>{element.author}</td>
-                
+                <td>
+                    <UpdateList
+                        elementId={element.id}
+                        singledata={props.singledata}
+                        getList={props.getList}
+                        updateList={props.updateList}
+                        handleChange={props.handleChange}
+                    >
+                    </UpdateList>
+                </td>
+                <td>
+                    <DeleteList
+                        elementId={element.id}
+                        singledata={props.singledata}
+                        getList={props.getList}
+                        deleteList={props.deleteList}
+                    >
+                    </DeleteList>
+                </td>
             </tr>
         )
     })
-    return (
+    return(
         <table className="table table-striped">
             <thead>
                 <tr>
@@ -26,7 +46,7 @@ function Lists(props) {
             </thead>
             <tbody>{listrows}</tbody>
         </table>
-    )
+    );
 }
 
 export default Lists;
